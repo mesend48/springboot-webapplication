@@ -27,6 +27,20 @@
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>3.0.2</version>
+				<configuration>
+					<serverId>nexus</serverId>
+					<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
+					<skipStaging>true</skipStaging>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -34,27 +48,13 @@
     			<artifactId>maven-war-plugin</artifactId>
     			<version>3.3.2</version>
 			</plugin>
-					<executions>
-						<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<serverId>nexus</serverId>
-						<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
+
+			<plugin>
+				<groupId>io.snyk</groupId>
+				<artifactId>snyk-maven-plugin</artifactId>
+				<version>3.3.2</version>
+				<inherited>false</inherited>
 			</plugin>
-			  <plugin>
-               <groupId>io.snyk</groupId>
-                 <artifactId>snyk-maven-plugin</artifactId>
-                 <version>3.3.2</version>
-                 <inherited>false</inherited>
-    </plugin>
 		</plugins>
 	</build>
 </project>

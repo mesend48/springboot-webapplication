@@ -1,17 +1,1 @@
-pipeline {
-    agent {
-        label 'slave1'
-    }
-    stages {
-        stage('Checkout the code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/mesend48/springboot-webapplication.git'
-            }
-        }
-        stage ('Build the Project') {
-           steps{
-                 sh "mvn clean install"
-            }
-        }    
-    }
-}
+
